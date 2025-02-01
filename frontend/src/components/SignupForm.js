@@ -4,11 +4,10 @@ import React, { useState } from 'react';
 const SignupForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [role, setRole] = useState('student');  // Default role is 'student'
+    const [role, setRole] = useState('student');  
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Add API request to signup here
         fetch('/api/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -16,11 +15,8 @@ const SignupForm = () => {
         })
         .then(response => response.json())
         .then(data => {
-            // Handle signup success or redirect based on role
             if (data.role === 'student') {
-                // Navigate to student dashboard
             } else if (data.role === 'teacher') {
-                // Navigate to teacher dashboard
             }
         })
         .catch(err => console.error('Signup failed', err));
